@@ -1,0 +1,36 @@
+String smartAssigning(String[] names, boolean[] statuses, int[] projects, int[] tasks) {
+    
+    
+    int len = names.length;
+    
+    int prev_tasks = 99999;
+    int prev_projects = 99999;
+    String ha = "";
+    
+    for(int i=0;i<len;i++){
+        
+        if(!statuses[i]){
+            
+            if(tasks[i] < prev_tasks){
+                   ha = names[i];
+                   prev_tasks = tasks[i];
+                   prev_projects = projects[i];
+            }else if(tasks[i] == prev_tasks){
+                if(projects[i] < prev_projects){
+                    ha = names[i];
+                    prev_tasks = tasks[i];
+                    prev_projects = projects[i];
+                }
+            }
+            
+            
+        }else{
+            continue;
+        }
+        
+    }
+    
+    return ha;
+    
+
+}
